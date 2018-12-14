@@ -3,3 +3,4 @@
 
 
 Got::CLI.new.call
+require_relative "../lib/got”
