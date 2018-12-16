@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
 
-
+require_relative '../lib/got'
 Got::CLI.new.call
-require_relative "../lib/got”
