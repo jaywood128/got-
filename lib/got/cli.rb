@@ -2,8 +2,7 @@
 class Got::CLI
 
   def call
-    puts <<-DOC "Welcome to The Game of Thrones API with the Maester of the Night's Watch, Maester Aemon!"
-    These are the books.
+    puts <<-DOC "Welcome to the fictional realm of Westeros! Learn more about the popular novels that inspired the TV show, Game of Thrones."
     DOC
     list_books
     menu
@@ -11,7 +10,7 @@ class Got::CLI
   end
 
   def menu
-    puts "Enter the book you want more info on. For exiting, type 'exit' and to see the books again 'list_books':"
+     puts "Enter the book you want more info on. For exiting, type exit and to see the books again list_books: "
     input = nil
     while input != 'exit'
 
@@ -47,9 +46,5 @@ end
 
   def list_characters
 
-  end
-
-  def self.get_title_by_number(num)
-    #user inputs a number, the method returns the title of the novel based on the Song of Fire and Ice series.
   end
 end
