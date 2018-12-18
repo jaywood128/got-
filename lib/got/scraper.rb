@@ -1,7 +1,7 @@
 require 'pry'
 require 'httparty'
 class Got::Scraper
-  extend Got
+
 
   include HTTParty
   format :json
@@ -11,14 +11,14 @@ class Got::Scraper
   WORD_PARTICLES = %w(and or the over to the a but of for with).freeze
 
   def self.get_books
-    # @get_books ||= begin
-    #   response    = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
-    #   binding.pry
-    #   total_pages = get_page_count(response)
-    #
-    #   get_all_records('books', response.parsed_response, total_pages)
-    binding.pry
-    response = self.class.get('{#BASE_ENDPOINT}/api/books')
+    
+    response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
+    response.map do |book|
+        {:title => book['name'],
+        :author => book['authors'][0],
+      :number_of_pages => book['numberOfPages'] }
+    end    
+      
 
     end
 end
