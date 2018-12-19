@@ -3,4 +3,4 @@
 
 require_relative '../lib/got'
 # Got::CLI.new.call
-Got::Scraper.get_books
+Got::API.get_books

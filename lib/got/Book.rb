@@ -1,11 +1,19 @@
+require 'pry'
+require 'httparty'
 class Got::Book
-  attr_reader :title
+  include HTTParty
+  format :json
 
-  @@all = []
- def initialize(title)
-  @title = title
-  @@all >> self
-end
+  attr_reader :title, :isbn, :author, :numberOfPages, :publisher, :country, :media_type, :characters
 
+ def initialize
+
+ end
+
+  def self.create_from_collection
+    API.get_books
+
+
+  end
 
 end

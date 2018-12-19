@@ -1,6 +1,6 @@
 require 'pry'
 require 'httparty'
-class Got::Scraper
+class Got::API
 
 
   include HTTParty
@@ -11,14 +11,16 @@ class Got::Scraper
   WORD_PARTICLES = %w(and or the over to the a but of for with).freeze
 
   def self.get_books
-    
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
     response.map do |book|
-        {:title => book['name'],
+      book_hash =  {:title => book['name'],
         :author => book['authors'][0],
-      :number_of_pages => book['numberOfPages'] }
-    end    
-      
-
+      :number_of_pages => book['numberOfPages'],
+      :character_ids => book['characters'].map { |url| url.split("/").last.to_i}
+      }
+      binding.pry
     end
+
+  end
+
 end
