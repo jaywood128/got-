@@ -2,7 +2,6 @@ require 'pry'
 require 'httparty'
 class Got::API
 
-
   include HTTParty
   format :json
 
@@ -19,7 +18,7 @@ class Got::API
       :character_ids => book['characters'].map { |url| url.split("/").last.to_i}
       }
       binding.pry
-    end
+  end
 
   end
 
