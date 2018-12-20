@@ -5,10 +5,13 @@ class Got::Book
   format :json
 
   attr_reader :title, :isbn, :author, :numberOfPages, :publisher, :country, :media_type, :characters
+@@all = []
+ def initialize(title, author, number_of_pages,character_ids)
+   @@all << self
+ end
 
- def call
-   binding.pry
-   API.get_books
+ def self.all
+   @@all
  end
 
  def self.search_by_character_name(name)
