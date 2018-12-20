@@ -14,13 +14,12 @@ class Got::Book
    @@all
  end
 
- def self.search_by_character_name(name)
-     self.all.each do |book|
+ def search_by_character_name(name)
+      self.all.each do |book|
       book[:character_ids].map do |url|
        get("https://anapioficeandfire.com/api/characters/#{url}")
-       binding.pry
+
      end
    end
  end
-
 end
