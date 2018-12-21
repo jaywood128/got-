@@ -3,5 +3,4 @@
 
 require_relative '../lib/got'
 # Got::CLI.new.call
-Got::Book.all
-Positive vibes!
+Got::API.print_all_books
