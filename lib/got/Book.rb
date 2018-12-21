@@ -6,24 +6,14 @@ class Got::Book
 
   attr_reader :title, :isbn, :author, :numberOfPages, :publisher, :country, :media_type, :characters
 @@all = []
- def initialize(title, author, number_of_pages,character_ids)
+ def initialize(hash)
+   @title = hash['name']
+   @author = hash['authors']
+   @number_of_pages = hash['numberOfPages']
    @@all << self
  end
-
  def self.all
    @@all
- end
-
- def self.get_more_info
-   book = get("http://anapioficeandfire.com/api/books")
-   book.map do |book|
-          info =  {:isbn => book['isbn'],
-                    :authors => book['authors'],
-                    :number_of_pages => book['numberOfPages'],
-                    :publisher => book['publisher']
-                  }
-
-          end
  end
 
  def search_by_character_name(name)
