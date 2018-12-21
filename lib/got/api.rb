@@ -19,6 +19,7 @@ class Got::API
         }
 
       Got::Book.new(book_hash[:title], book_hash[:author], book_hash[:number_of_pages], book_hash[:character_ids])
+      binding.pry
   end
 
   end
