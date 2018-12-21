@@ -14,16 +14,16 @@ class Got::Book
    @@all
  end
 
- def get_more_info
-   book = get("#{BASE_ENDPOINT}/books")
+ def self.get_more_info
+   book = get("http://anapioficeandfire.com/api/books")
    book.map do |book|
-   <<-DOC isbn: #{book['isbn']}
-          authors: #{book['authors']}
-          puts number of pages: #{book['numberOfPages']}
-          puts publisher: #{book['publisher']}
-    DOC
-    binding.pry
+          info =  {:isbn => book['isbn'],
+                    :authors => book['authors'],
+                    :number_of_pages => book['numberOfPages'],
+                    :publisher => book['publisher']
+                  }
 
+          end
  end
 
  def search_by_character_name(name)
