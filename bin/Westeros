@@ -4,3 +4,4 @@
 require_relative '../lib/got'
 # Got::CLI.new.call
 Got::Book.all
+Positive vibes!
