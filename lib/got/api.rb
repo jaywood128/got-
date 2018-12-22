@@ -17,6 +17,7 @@ class Got::API
       :number_of_pages => book['numberOfPages'],
       :character_ids => book['characters'].map { |url| url.split("/").last.to_i}
         }
+        binding.pry
         Got::Book.new(book_hash)
     # all_the_books = get("#{BASE_ENDPOINT}/books")
     # all_the_books.map do |book|

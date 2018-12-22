@@ -7,9 +7,9 @@ class Got::Book
   attr_reader :title, :isbn, :author, :numberOfPages, :publisher, :country, :media_type, :characters
 @@all = []
  def initialize(hash)
-   @title = hash['name']
-   @author = hash['authors']
-   @number_of_pages = hash['numberOfPages']
+   @title = hash[:title]
+   @author = hash[:author]
+   @number_of_pages = hash[:number_of_pages]
    @@all << self
  end
  def self.all
