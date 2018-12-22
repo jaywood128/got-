@@ -9,15 +9,15 @@ class Got::API
 
   WORD_PARTICLES = %w(and or the over to the a but of for with).freeze
 
-  def self.print_all_books
+  def self.collect_all_books
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
     response.map do |book|
       book_hash =  {:title => book['name'],
         :author => book['authors'][0],
       :number_of_pages => book['numberOfPages'],
-      :character_ids => book['characters'].map { |url| url.split("/").last.to_i}
+      # :character_ids => book['characters'].map { |url| url.split("/").last.to_i}
         }
-        binding.pry
+
         Got::Book.new(book_hash)
     # all_the_books = get("#{BASE_ENDPOINT}/books")
     # all_the_books.map do |book|
