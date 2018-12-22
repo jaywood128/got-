@@ -3,4 +3,4 @@
 
 require_relative '../lib/got'
 # Got::CLI.new.call
-Got::API.collect_character_ids
+Got::API.collect_character_numbers

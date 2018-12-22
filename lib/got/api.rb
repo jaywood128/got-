@@ -24,11 +24,26 @@ class Got::API
     #   puts "Book #{book['url'].split.map {|url| url.split("/").last.to_i}} : #{book['name']}."
 
   end
+end
 
   def self.collect_character_ids
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
-    binding.pry
+    response.map do |book|
+      character_hash =  {
+                    :character_ids => book['characters'].map { |url| url.split("/").last.to_i}
+                  }
 
+    end
+  end
+
+  def self.collect_character_numbers
+       Got::API.collect_character_ids.map do |arr|
+         arr[:character_ids].map |number|
+
+         binding.pry
+        get("https://anapioficeandfire.com/api/characters/#{number}")
+      end
+    end
   end
 
   def self.get_more_info
@@ -42,5 +57,4 @@ class Got::API
 
            end
   end
-end
 end
