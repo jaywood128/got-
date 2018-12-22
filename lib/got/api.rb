@@ -14,7 +14,7 @@ class Got::API
     response.map do |book|
       book_hash =  {:title => book['name'],
         :author => book['authors'][0],
-      :number_of_pages => book['numberOfPages'],
+      :number_of_pages => book['numberOfPages']
       # :character_ids => book['characters'].map { |url| url.split("/").last.to_i}
         }
 
@@ -24,6 +24,10 @@ class Got::API
     #   puts "Book #{book['url'].split.map {|url| url.split("/").last.to_i}} : #{book['name']}."
 
   end
+
+  def self.collect_character_ids
+    response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
+    binding.pry
 
   end
 
@@ -38,4 +42,5 @@ class Got::API
 
            end
   end
+end
 end
