@@ -11,6 +11,7 @@ class Got::API
 
   def self.collect_all_books
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
+
     response.map do |book|
       book_hash =  {:title => book['name'],
         :author => book['authors'][0],
@@ -37,15 +38,15 @@ end
   end
 
   def self.collect_character_numbers
-       Got::API.collect_character_ids.map do |arr|
-         arr[:character_ids].map |number|
 
-         binding.pry
-        get("https://anapioficeandfire.com/api/characters/#{number}")
+       Got::API.collect_character_ids.map do |arr|
+
+         arr[:character_ids].map do |id|
+           binding.pry
+        get("https://anapioficeandfire.com/api/characters/#{id}")
       end
     end
-  end
-
+end
   def self.get_more_info
     book = get("http://anapioficeandfire.com/api/books")
     book.map do |book|
