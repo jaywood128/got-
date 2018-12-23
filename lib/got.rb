@@ -2,6 +2,7 @@ require_relative "./got/version"
 require_relative './got/cli'
 require_relative './got/Book'
 require_relative './got/api'
+require_relative './got/Character'
 require 'open-uri'
 require 'nokogiri'
 require 'pry'
