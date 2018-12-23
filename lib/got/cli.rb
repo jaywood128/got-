@@ -36,11 +36,9 @@ class Got::CLI
 end
 
   def list_books
-    puts "book1"
-    puts "book2"
-    puts "book3"
-    puts "book4"
-    puts "book5"
+    all_the_books = get("#{BASE_ENDPOINT}/books")
+    all_the_books.map do |book|
+   puts "Book #{book['url'].split.map {|url| url.split("/").last.to_i}} : #{book['name']}."
 
   end
 

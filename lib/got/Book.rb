@@ -13,7 +13,7 @@ class Got::Book
    @character_urls = hash[:character_urls][1..20]
    @characters = []
    @@all << self
-binding.pry
+
  end
  def self.all
    @@all
