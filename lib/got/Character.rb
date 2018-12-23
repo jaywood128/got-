@@ -15,7 +15,6 @@ class Got::Character
   @tv_Series = url['tvSeries']
   @played_By = url["playedBy"]
   @@all << self
-  binding.pry
  end
 
  def books_featured_in

@@ -15,8 +15,8 @@ class Got::API
     response.map do |book|
       book_hash =  {:title => book['name'],
         :author => book['authors'][0],
-      :number_of_pages => book['numberOfPages']
-      # :character_ids => book['characters'].map { |url| url.split("/").last.to_i}
+      :number_of_pages => book['numberOfPages'],
+      :character_urls => book['characters']#.map { |url| url.split("/").last.to_i}
         }
 
         Got::Book.new(book_hash)
