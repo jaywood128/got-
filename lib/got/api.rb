@@ -43,7 +43,6 @@ end
 
          arr[:character_ids].map do |id|
         url = get("https://anapioficeandfire.com/api/characters/#{id}")
-        binding.pry
         Got::Character.new(url)
       end
     end
