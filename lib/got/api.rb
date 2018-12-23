@@ -19,7 +19,17 @@ class Got::API
       :character_urls => book['characters']#.map { |url| url.split("/").last.to_i}
         }
 
-        Got::Book.new(book_hash)
+        y = Got::Book.new(book_hash)
+        y.character_urls.each do |character_url|
+          # Character URL for specific character_urls
+          # Method takes a character URL, return a character object
+          x = Character.new
+          y.characters << MakeCharacter(character_url)
+        end
+        y.character = Character.new()
+        binding.pry
+
+        # How would I assign Book.characters a value and where?
     # all_the_books = get("#{BASE_ENDPOINT}/books")
     # all_the_books.map do |book|
     #   puts "Book #{book['url'].split.map {|url| url.split("/").last.to_i}} : #{book['name']}."
@@ -43,7 +53,9 @@ end
 
          arr[:character_ids].map do |id|
         url = get("https://anapioficeandfire.com/api/characters/#{id}")
-        Got::Character.new(url)
+
+       Got::Character.new(url)
+       binding.pry
       end
     end
 end
