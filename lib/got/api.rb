@@ -13,11 +13,11 @@ class Got::API
   def self.collect_all_books
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
 
-    response.map do |book|
-      book_hash =  {:title => book['name'],
-      :author => book['authors'][0],
-      :number_of_pages => book['numberOfPages'],
-      :character_urls => book['characters']#.map { |url| url.split("/").last.to_i}
+    response.map do |res|
+      book_hash =  {:title => res['name'],
+      :author => res['authors'][0],
+      :number_of_pages => res['numberOfPages'],
+      :character_urls => res['characters']#.map { |url| url.split("/").last.to_i}
         }
       book = Got::Book.new(book_hash)
 
@@ -26,16 +26,22 @@ class Got::API
 
           #ter Character URL for specific character_urls
         # Method takes a character URL, return a character object
-        book.characters << create_characters(character_url)
+
+        book.characters << create_character(character_url)
       end
     end
  #Book.all.each |book| do  book.characters
   end
+def self.collect_all_characters
+  #Loop that makes 43 requests as we go for each page, for each req we need to iterate over each response and then use each hash to create a character.
 
-  def self.create_characters(url)    #Blog refactoring creating a Character instance using a call-back
-    data = get(url)
-    character = Character.new(data)
-  end
+
+
+end
+  # def self.create_character(url)    #Blog refactoring creating a Character instance using a call-back
+  #   data = get(url)
+  #   character = Character.new(data)
+  # end
 
   # def self.collect_character_ids
   #   response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")

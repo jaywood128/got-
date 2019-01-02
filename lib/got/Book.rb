@@ -10,7 +10,7 @@ class Got::Book
    @title = hash[:title]
    @author = hash[:author]
    @number_of_pages = hash[:number_of_pages]
-   @character_urls = hash[:character_urls][1..20]
+   @character_urls = hash[:character_urls]
    @characters = []
    @@all << self
 
