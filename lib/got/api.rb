@@ -33,9 +33,16 @@ class Got::API
  #Book.all.each |book| do  book.characters
   end
 def self.collect_all_characters
+  i = 0
+  while i <= 43
+  response = get("https://www.anapioficeandfire.com/api/characters?page=#{i}&pageSize=50")
+  response.map do |res|
+  character = {res['url'] =>  Got::Character.new(res)}
+  end
+  i += 1
+
+end
   #Loop that makes 43 requests as we go for each page, for each req we need to iterate over each response and then use each hash to create a character.
-
-
 
 end
   # def self.create_character(url)    #Blog refactoring creating a Character instance using a call-back
