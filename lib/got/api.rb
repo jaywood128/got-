@@ -37,7 +37,9 @@ def self.collect_all_characters
   while i <= 43
   response = get("https://www.anapioficeandfire.com/api/characters?page=#{i}&pageSize=50")
   response.map do |res|
-  character = {res['url'] =>  Got::Character.new(res)}
+    characters = { res['url'] => Got::Character.new(res)}
+    binding.pry
+
   end
   i += 1
 
