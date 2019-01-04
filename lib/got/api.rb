@@ -10,6 +10,14 @@ class Got::API
   WORD_PARTICLES = %w(and or the over to the a but of for with).freeze
 
 
+  def self.list_books
+    all_the_books = get("#{BASE_ENDPOINT}/books")
+    all_the_books.map do |book|
+   puts "Book #{book['url'].split.map {|url| url.split("/").last.to_i}} : #{book['name']}."
+
+  end
+end
+
   def self.collect_all_books
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
 
@@ -22,12 +30,13 @@ class Got::API
       book = Got::Book.new(book_hash)
 
 
+
       book.character_urls.each do |character_url|
 
           #ter Character URL for specific character_urls
         # Method takes a character URL, return a character object
 
-        book.characters << create_character(character_url)
+        #book.characters << create_character(character_url)
       end
     end
  #Book.all.each |book| do  book.characters
@@ -38,7 +47,7 @@ def self.collect_all_characters
   response = get("https://www.anapioficeandfire.com/api/characters?page=#{i}&pageSize=50")
   response.map do |res|
     characters = { res['url'] => Got::Character.new(res)}
-    binding.pry
+binding.pry
 
   end
   i += 1
