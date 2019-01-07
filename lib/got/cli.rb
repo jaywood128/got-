@@ -7,16 +7,15 @@ class Got::CLI
 
     DOC
 
-    start
+    Got::CLI.start
 
   end
 
-  def start
+  def self.start
      puts "To see all the books, type list"
 
      input = gets.strip
      if input == "list"
-       Got::API.list_books
        Got::API.collect_all_books
 
      end

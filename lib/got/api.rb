@@ -18,7 +18,7 @@ class Got::API
   end
 end
 
-  def self.collect_all_books
+def self.collect_all_books
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
 
     response.map do |res|
@@ -29,18 +29,9 @@ end
         }
       book = Got::Book.new(book_hash)
 
-
-
-      book.character_urls.each do |character_url|
-
-          #ter Character URL for specific character_urls
-        # Method takes a character URL, return a character object
-
-        #book.characters << create_character(character_url)
-      end
     end
- #Book.all.each |book| do  book.characters
-  end
+end
+
 def self.collect_all_characters
   i = 0
   while i <= 43

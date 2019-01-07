@@ -3,4 +3,4 @@
 
 require_relative '../lib/got'
 #Got::CLI.new.call
-Got::API.collect_all_characters
+Got::CLI.new.call
