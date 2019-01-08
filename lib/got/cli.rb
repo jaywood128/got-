@@ -29,13 +29,18 @@ class Got::CLI
   end
 
   def self.start
-     puts "To see all the books, type list"
+     puts "These are your options, type them as is: "
+     puts "print all books"
+     puts "find character by name"
 
      input = gets.strip
-     if input == "list"
+     if input == "print all books"
        print_all_books
-
-
+     elsif input == "find character by name"
+       input = gets.strip
+       Got::API.find_character_by_name(input)
+    else
+      exit
 
      end
   end

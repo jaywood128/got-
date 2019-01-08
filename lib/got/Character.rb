@@ -26,6 +26,10 @@ class Got::Character
    @@all.has_key?(url)
  end
 
+ def self.character_name_exists?(name)
+   @@all.has_key?(name)
+end
+
  def self.all
    @@all
  end
