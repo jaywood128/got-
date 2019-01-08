@@ -32,16 +32,19 @@ class Got::CLI
      puts "These are your options, type them as is: "
      puts "print all books"
      puts "find character by name"
+     puts "exit"
 
      input = gets.strip
-     if input == "print all books"
-       print_all_books
-     elsif input == "find character by name"
-       input = gets.strip
-       Got::API.find_character_by_name(input)
-    else
-      exit
+     while input != "exit"
+       if input == "print all books"
+         print_all_books
 
+       elsif input == "find character by name"
+         input = gets.strip
+         Got::API.find_character_by_name(input)
+      else
+        exit
+       end
      end
   end
 
