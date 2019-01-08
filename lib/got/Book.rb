@@ -3,7 +3,7 @@ require 'httparty'
 class Got::Book
   include HTTParty
   format :json
-  attr_accessor :characters
+  attr_accessor :charactersobjects
   attr_reader :title, :isbn, :author, :numberOfPages, :publisher, :country, :media_type, :character_urls
 @@all = []
  def initialize(hash)
@@ -11,7 +11,7 @@ class Got::Book
    @author = hash[:author]
    @number_of_pages = hash[:number_of_pages]
    @character_urls = hash[:character_urls]
-   @characters = []
+   @charactersobjects = []
    @@all << self
 
  end

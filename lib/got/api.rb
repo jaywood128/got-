@@ -30,6 +30,7 @@ def self.create_books
       book = Got::Book.new(book_hash)
 
     end
+    collect_all_characters
 end
 
 def self.collect_all_characters
@@ -44,17 +45,20 @@ def self.collect_all_characters
 #   i += 1
 
   #Loop that makes 43 requests as we go for each page, for each req we need to iterate over each response and then use each hash to create a character.
-Got::Book.all.each do |book|
-  book.character_urls.each do |url|
-    if !Got::Character.all.has_key?(url)
-      response = get(url)
-      char = Got::Character.new(response)
-      char.books << book
-    else
-      Got::Character.all[url].books << book
+  Got::Book.all.each do |book|
+    book.character_urls.each do |url|
+      if !Got::Character.url_exists?(url)
+        response = get(url)
+        char = Got::Character.new(response)
+        char.booksobjects << book
+        book.charactersobjects << char
+      else
+        Got::Character.find_by_url(url).books << book
+      end
     end
+    binding.pry
   end
-end
+
 end
   # def self.create_character(url)    #Blog refactoring creating a Character instance using a call-back
   #   data = get(url)
