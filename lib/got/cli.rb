@@ -14,13 +14,13 @@ class Got::CLI
   def self.print_all_books
 
     Got::Book.all.each do |book|
-      puts "Name: " book.title
-      puts "Title: " book.author
-      puts "Number of pages: " book.number_of_pages
+      puts "Name: #{book.title}"
+      puts "Author: #{book.author}"
+      puts "Number of pages: #{book.number_of_pages}"
 
       book.charactersobjects.each do |char|
       puts "Point of View Characters: "
-        puts char.name
+        puts "Name: #{char.name}"
       end
       puts " \n\n        "
     end
