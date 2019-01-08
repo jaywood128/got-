@@ -56,7 +56,7 @@ def self.collect_all_characters
         Got::Character.find_by_url(url).books << book
       end
     end
-    binding.pry
+
   end
 
 end

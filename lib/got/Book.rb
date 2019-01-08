@@ -4,7 +4,7 @@ class Got::Book
   include HTTParty
   format :json
   attr_accessor :charactersobjects
-  attr_reader :title, :isbn, :author, :numberOfPages, :publisher, :country, :media_type, :character_urls
+  attr_reader :title, :isbn, :author, :number_of_pages, :publisher, :country, :media_type, :character_urls
 @@all = []
  def initialize(hash)
    @title = hash[:title]
