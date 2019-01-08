@@ -18,14 +18,14 @@ class Got::API
   end
 end
 
-def self.collect_all_books
+def self.create_books
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
 
     response.map do |res|
       book_hash =  {:title => res['name'],
       :author => res['authors'][0],
       :number_of_pages => res['numberOfPages'],
-      :character_urls => res['characters']#.map { |url| url.split("/").last.to_i}
+      :character_urls => res['povCharacters']#.map { |url| url.split("/").last.to_i}
         }
       book = Got::Book.new(book_hash)
 
@@ -33,19 +33,28 @@ def self.collect_all_books
 end
 
 def self.collect_all_characters
-  i = 0
-  while i <= 43
-  response = get("https://www.anapioficeandfire.com/api/characters?page=#{i}&pageSize=50")
-  response.map do |res|
-    characters = { res['url'] => Got::Character.new(res)}
-binding.pry
+#   i = 0
+#   while i <= 43
+#   response = get("https://www.anapioficeandfire.com/api/characters?page=#{i}&pageSize=50")
+#   response.map do |res|
+#     characters = { res['url'] => Got::Character.new(res)}
+# binding.pry
+#
+#   end
+#   i += 1
 
-  end
-  i += 1
-
-end
   #Loop that makes 43 requests as we go for each page, for each req we need to iterate over each response and then use each hash to create a character.
-
+Got::Book.all.each do |book|
+  book.character_urls.each do |url|
+    if !Got::Character.all.has_key?(url)
+      response = get(url)
+      char = Got::Character.new(response)
+      char.books << book
+    else
+      Got::Character.all[url].books << book
+    end
+  end
+end
 end
   # def self.create_character(url)    #Blog refactoring creating a Character instance using a call-back
   #   data = get(url)

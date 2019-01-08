@@ -3,4 +3,5 @@
 
 require_relative '../lib/got'
 #Got::CLI.new.call
-Got::CLI.new.call
+#Got::CLI.new.call
+Got::API.create_books
