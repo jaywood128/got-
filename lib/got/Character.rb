@@ -17,7 +17,7 @@ class Got::Character
   @tv_Series = hash['tvSeries']
   @played_By = hash["playedBy"]
   @@all[@url] = self # @url is the key and self is the value. The value is the Character object iself and every character is accessible via the url.
-  @@characters << self
+  @@characters << self # Character object added to an array called characters
  end
 
  def self.characters
