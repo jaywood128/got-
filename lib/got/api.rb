@@ -62,25 +62,13 @@ def self.collect_all_characters
 end
 
 def self.find_character_by_name(name)
-  Got::Character.all.each do |character|
+  return_v = false
+  Got::Character.characters.each do |character|
     if character.name == name
-      character
-      puts "URL: #{character.url}"
-      puts "Name: #{character.name}"
-      puts "Gender: #{character.gender}"
-      puts "Culture: #{character.culture}"
-      puts "Date of Birth: #{character.birth}"
-      puts "Died: #{character.died}"
-      puts "Allegiance: #{character.allegiance}"
-      puts "Books featured in: #{character.books}"
-      puts "TV Series: #{character.tv_series}"
-      puts "Played by: #{character.played_by}"
-    else
-      false
+      return_v = character
     end
   end
-
-
+  return_v
 end
   # def self.create_character(url)    #Blog refactoring creating a Character instance using a call-back
   #   data = get(url)

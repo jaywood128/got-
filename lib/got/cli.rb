@@ -38,12 +38,25 @@ class Got::CLI
      while input != "exit"
        if input == "print all books"
          print_all_books
+         print "Enter another command: "
          input = gets.strip
        elsif input == "find character by name"
          character_name = gets.strip
-        if Got::API.find_character_by_name(character_name) != false
-          # printing
+         result = Got::API.find_character_by_name(character_name)
+        if result != false
           puts "found"
+          puts "URL: #{result.url}"
+          puts "Name: #{result.name}"
+          puts "Gender: #{result.gender}"
+          puts "Culture: #{result.culture}"
+          puts "Date of Birth: #{result.born}"
+          puts "Died: #{result.died}"
+          puts "Allegiance: #{result.allegiances}"
+          # puts "Books featured in: #{result.books}"
+          puts "TV Series: #{result.tv_series}"
+          puts "Played by: #{result.played_by}"
+
+
         else
           puts "not found"
           # character not found

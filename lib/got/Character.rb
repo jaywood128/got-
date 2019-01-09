@@ -3,6 +3,7 @@ class Got::Character
   attr_reader :url, :name, :gender, :culture, :born, :died, :allegiances, :books, :tv_series, :played_by
 
 @@all = {}
+@@characters = []
  def initialize(hash)
   @url = hash['url']
   @name = hash['name']
@@ -16,6 +17,11 @@ class Got::Character
   @tv_Series = hash['tvSeries']
   @played_By = hash["playedBy"]
   @@all[@url] = self # @url is the key and self is the value. The value is the Character object iself and every character is accessible via the url.
+  @@characters << self
+ end
+
+ def self.characters
+   @@characters
  end
 
  def self.find_by_url(url)
