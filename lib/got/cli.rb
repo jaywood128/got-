@@ -38,15 +38,28 @@ class Got::CLI
      while input != "exit"
        if input == "print all books"
          print_all_books
-
-       elsif input == "find character by name"
          input = gets.strip
-         Got::API.find_character_by_name(input)
+       elsif input == "find character by name"
+         character_name = gets.strip
+        if Got::API.find_character_by_name(character_name) != false
+          # printing
+          puts "found"
+        else
+          puts "not found"
+          # character not found
+          # ask for input again
+          # input find character by name
+          # Got::API.find_character_by_name(character_name
+        end
+          # Return a character object or nil
+         input = gets.strip
+       elsif input == "exit"
+         exit
       else
-        exit
+        "Invalid response!"
+        input = gets.strip
        end
      end
   end
-
 
 end
