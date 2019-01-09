@@ -17,9 +17,8 @@ class Got::CLI
       puts "Name: #{book.title}"
       puts "Author: #{book.author}"
       puts "Number of pages: #{book.number_of_pages}"
-
-      book.charactersobjects.each do |char|
       puts "Point of View Characters: "
+      book.charactersobjects.each do |char|
         puts "Name: #{char.name}"
       end
       puts " \n\n        "
@@ -42,11 +41,12 @@ class Got::CLI
          input = gets.strip
        elsif input == "find character by name"
          character_name = gets.strip
-         result = Got::API.find_character_by_name(character_name)
-        if result != false
+         character = Got::API.find_character_by_name(character_name)
+        if character != false
+          puts character.details #create an instance method in Character.rb that accesses the character details
           puts "found"
           puts "URL: #{result.url}"
-          puts "Name: #{result.name}"
+          puts "#{result.name}"
           puts "Gender: #{result.gender}"
           puts "Culture: #{result.culture}"
           puts "Date of Birth: #{result.born}"
