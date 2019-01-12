@@ -43,7 +43,23 @@ class Got::CLI
          character_name = gets.strip
          character = Got::API.find_character_by_name(character_name)
         if character != false
-          character.details # puts character.details #create an instance method in Character.rb that accesses the character details
+          puts "Character found! Type 'Y' for more info, otherwise type 'N'"
+            y_or_n = gets.strip
+              if y_or_n == 'Y'
+                character.details
+              elsif y_or_n == 'N'
+                "Enter another command: "
+                another_command = gets.strip
+                if another_command == "find character by name"
+                  character_name = gets.strip
+                  character = find_character_by_name(character_name)
+                elsif another_command == "print all books"
+                  print_all_books
+                else
+                    exit
+                end
+              end
+           # puts character.details #create an instance method in Character.rb that accesses the character details
         else
           puts "not found"
           # character not found
@@ -53,13 +69,12 @@ class Got::CLI
         end
           # Return a character object or nil
          input = gets.strip
-       elsif input == "exit"
+        elsif input == "exit"
          exit
-      else
+        else
         "Invalid response!"
         input = gets.strip
        end
      end
-  end
-
+   end
 end
