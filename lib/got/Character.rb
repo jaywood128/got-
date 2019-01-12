@@ -39,4 +39,22 @@ end
  def self.all
    @@all
  end
+
+ def details
+
+   @@characters.each do |character|
+     puts "found"
+     puts "URL: #{character.url}"
+     puts "#{character.name}"
+     puts "Gender: #{character.gender}"
+     puts "Culture: #{character.culture}"
+     puts "Date of Birth: #{character.born}"
+     puts "Died: #{character.died}"
+     puts "Allegiance: #{character.allegiances}"
+     # puts "Books featured in: #{result.books}"
+     puts "TV Series: #{character.tv_series}"
+     puts "Played by: #{character.played_by}"
+  end
+
+ end
 end

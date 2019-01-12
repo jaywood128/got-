@@ -43,20 +43,7 @@ class Got::CLI
          character_name = gets.strip
          character = Got::API.find_character_by_name(character_name)
         if character != false
-          puts character.details #create an instance method in Character.rb that accesses the character details
-          puts "found"
-          puts "URL: #{result.url}"
-          puts "#{result.name}"
-          puts "Gender: #{result.gender}"
-          puts "Culture: #{result.culture}"
-          puts "Date of Birth: #{result.born}"
-          puts "Died: #{result.died}"
-          puts "Allegiance: #{result.allegiances}"
-          # puts "Books featured in: #{result.books}"
-          puts "TV Series: #{result.tv_series}"
-          puts "Played by: #{result.played_by}"
-
-
+          character.details # puts character.details #create an instance method in Character.rb that accesses the character details
         else
           puts "not found"
           # character not found
