@@ -11,7 +11,7 @@ class Got::Book
    @author = hash[:author]
    @number_of_pages = hash[:number_of_pages]
    @character_urls = hash[:character_urls]
-   @charactersobjects = []
+   @characters = []
    @@all << self
 
  end

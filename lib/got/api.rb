@@ -50,10 +50,10 @@ def self.collect_all_characters
       if !Got::Character.url_exists?(url)
         response = get(url)
         char = Got::Character.new(response)
-        char.booksobjects << book
-        book.charactersobjects << char
+        char.books << book
+        book.characters << char
       else
-        Got::Character.find_by_url(url).books << book
+        Got::Character.find_by_url(url).book_urls << book
       end
     end
 
