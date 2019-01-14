@@ -1,5 +1,5 @@
 class Got::Character
-  attr_accessor :booksobjects
+  attr_accessor :booksobjects, :books
   attr_reader :url, :name, :gender, :culture, :born, :died, :allegiances, :book_urls, :tv_series, :played_by
 
 @@all = {}
@@ -40,21 +40,19 @@ end
    @@all
  end
 
- def details
+  def details
 
-   @@characters.each do |character|
      puts "found"
-     puts "URL: #{character.url}"
-     puts "#{character.name}"
-     puts "Gender: #{character.gender}"
-     puts "Culture: #{character.culture}"
-     puts "Date of Birth: #{character.born}"
-     puts "Died: #{character.died}"
-     puts "Allegiance: #{character.allegiances}"
+     puts "URL: #{self.url}"
+     puts "#{self.name}"
+     puts "Gender: #{self.gender}"
+     puts "Culture: #{self.culture}"
+     puts "Date of Birth: #{self.born}"
+     puts "Died: #{self.died}"
+     puts "Allegiance: #{self.allegiances}"
      # puts "Books featured in: #{result.books}"
-     puts "TV Series: #{character.tv_series}"
-     puts "Played by: #{character.played_by}"
-  end
+     puts "TV Series: #{self.tv_series}"
+     puts "Played by: #{self.played_by}"
 
- end
+   end
 end

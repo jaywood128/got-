@@ -56,11 +56,8 @@ def self.collect_all_characters
         Got::Character.find_by_url(url).book_urls << book
       end
     end
-
   end
-
 end
-
 def self.find_character_by_name(name)
   return_v = false
   Got::Character.characters.each do |character|
