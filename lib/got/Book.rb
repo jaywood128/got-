@@ -18,7 +18,6 @@ class Got::Book
  def self.all
    @@all
  end
-
  def print_books_characters
    Got::Book.all.each do |book|
      book.characters

@@ -13,16 +13,32 @@ class Got::CLI
 
   def self.print_all_books
 
-    Got::Book.all.each do |book|
-      puts "Name: #{book.title}"
-      puts "Author: #{book.author}"
-      puts "Number of pages: #{book.number_of_pages}"
-      puts "Point of View Characters: "
-      book.charactersobjects.each do |char|
-        puts "Name: #{char.name}"
-      end
-      puts " \n\n        "
+    Got::Book.all.each.with_index(1) do |book, i| #value, index
+      puts "Name:#{i} #{book.title}"
     end
+    puts "Enter book number for more info: "
+    book_number = gets.strip.to_i
+    if (1..12).include?(book_number)
+      book = Got::Book.all[book_number - 1]
+      print_details_for_book(book)
+    elsif book_number == 'exit'
+      exit
+    else
+      "Not found, try again: "
+      print_all_books
+    end
+
+
+  end
+
+  def self.print_details_for_book(book)
+    puts "Author: #{book.author}"
+    puts "Number of pages: #{book.number_of_pages}"
+    puts "Point of View Characters: "
+    book.characters.each do |char|
+      puts "Name: #{char.name}"
+    end
+    puts " \n\n "
 
 
   end
@@ -30,6 +46,7 @@ class Got::CLI
   def self.start
      puts "These are your options, type them as is: "
      puts "print all books"
+     puts "print book's characters and details"
      puts "find character by name"
      puts "exit"
 
@@ -46,7 +63,7 @@ class Got::CLI
           puts "Character found! Type 'Y' for more info, otherwise type 'N'"
             y_or_n = gets.strip
               if y_or_n == 'Y'
-                character.details
+                puts character.details
               elsif y_or_n == 'N'
                 "Enter another command: "
                 another_command = gets.strip

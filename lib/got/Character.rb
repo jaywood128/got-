@@ -42,17 +42,19 @@ end
 
   def details
 
-     puts "found"
-     puts "URL: #{self.url}"
-     puts "#{self.name}"
-     puts "Gender: #{self.gender}"
-     puts "Culture: #{self.culture}"
-     puts "Date of Birth: #{self.born}"
-     puts "Died: #{self.died}"
-     puts "Allegiance: #{self.allegiances}"
+      [
+        "found",
+        "URL: #{self.url}",
+        "#{self.name}",
+        "Gender: #{self.gender}",
+        "Culture: #{self.culture}",
+        "Date of Birth: #{self.born}",
+        "Died: #{self.died}",
+        "Allegiance: #{self.allegiances}",
      # puts "Books featured in: #{result.books}"
-     puts "TV Series: #{self.tv_series}"
-     puts "Played by: #{self.played_by}"
+        "TV Series: #{self.tv_series}",
+        "Played by: #{self.played_by}"
+      ]
 
    end
 end

@@ -31,20 +31,10 @@ def self.create_books
 
     end
     collect_all_characters
+    
 end
 
 def self.collect_all_characters
-#   i = 0
-#   while i <= 43
-#   response = get("https://www.anapioficeandfire.com/api/characters?page=#{i}&pageSize=50")
-#   response.map do |res|
-#     characters = { res['url'] => Got::Character.new(res)}
-# binding.pry
-#
-#   end
-#   i += 1
-
-  #Loop that makes 43 requests as we go for each page, for each req we need to iterate over each response and then use each hash to create a character.
   Got::Book.all.each do |book|
     book.character_urls.each do |url|
       if !Got::Character.url_exists?(url)
