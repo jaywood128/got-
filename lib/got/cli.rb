@@ -30,13 +30,19 @@ class Got::CLI
 
 
   end
-
+def self.print_books_characters
+  binding.pry
+  book.characters.each.with_index(1) do |character, i|
+ #value, index
+    puts "#{i} #{character.name}"
+  end
+end
   def self.print_details_for_book(book)
     puts "Author: #{book.author}"
     puts "Number of pages: #{book.number_of_pages}"
     puts "Point of View Characters: "
     book.characters.each do |char|
-      puts "Name: #{char.name}"
+      puts "#{char.name}"
     end
     puts " \n\n "
 
@@ -54,6 +60,9 @@ class Got::CLI
      while input != "exit"
        if input == "print all books"
          print_all_books
+         puts "Type character's number for more info"
+         print_books_characters
+         input = gets.strip
          print "Enter another command: "
          input = gets.strip
        elsif input == "find character by name"
