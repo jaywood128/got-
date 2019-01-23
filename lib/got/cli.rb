@@ -17,37 +17,48 @@ class Got::CLI
       puts "Name:#{i} #{book.title}"
     end
     puts "Enter book number for more info: "
-    book_number = gets.strip.to_i
-    if (1..12).include?(book_number)
+      book_number = gets.strip.to_i
+      if (1..12).include?(book_number)
       book = Got::Book.all[book_number - 1]
       print_details_for_book(book)
-    elsif book_number == 'exit'
-      exit
-    else
-      "Not found, try again: "
-      print_all_books
-    end
+      elsif book_number == 'exit'
+        exit
+      else
+        "Not found, try again: "
+        print_all_books
+      end
 
 
   end
 def self.print_books_characters
-  binding.pry
-  book.characters.each.with_index(1) do |character, i|
- #value, index
-    puts "#{i} #{character.name}"
+  Got::Book.all do |book|
+    book.characters.each.with_index(1) do |character, i|
+
+      puts "#{i}. #{character}"
+    end
   end
 end
   def self.print_details_for_book(book)
+    character_count = []
     puts "Author: #{book.author}"
     puts "Number of pages: #{book.number_of_pages}"
     puts "Point of View Characters: "
-    book.characters.each do |char|
-      puts "#{char.name}"
+    book.characters.each.with_index do |char, i|
+      puts "#{i + 1}. #{char.name}"
+
     end
     puts " \n\n "
+    puts "Total number of POV characters: #{book.characters.count}"
+    char_number = gets.strip
+    binding.pry
+    if book.characters.count.include?(char_number)
 
+       char_number ==
+    end
+     #based on the char_number, select the corresponding character.details
+end
 
-  end
+  def find_character_by_number
 
   def self.start
      puts "These are your options, type them as is: "
@@ -62,17 +73,16 @@ end
          print_all_books
          puts "Type character's number for more info"
          print_books_characters
-         input = gets.strip
-         print "Enter another command: "
-         input = gets.strip
-       elsif input == "find character by name"
-         character_name = gets.strip
-         character = Got::API.find_character_by_name(character_name)
-        if character != false
-          puts "Character found! Type 'Y' for more info, otherwise type 'N'"
-            y_or_n = gets.strip
+           print "Enter another command: "
+           input = gets.strip
+         elsif input == "find character by name"
+           character_name = gets.strip
+           character = Got::API.find_character_by_name(character_name)
+           if character != false
+             puts "Character found! Type 'Y' for more info, otherwise type 'N'"
+             y_or_n = gets.strip
               if y_or_n == 'Y'
-                puts character.details
+                  puts character.details
               elsif y_or_n == 'N'
                 "Enter another command: "
                 another_command = gets.strip
@@ -103,4 +113,5 @@ end
        end
      end
    end
+end
 end
