@@ -31,7 +31,7 @@ def self.create_books
 
     end
     collect_all_characters
-    
+
 end
 
 def self.collect_all_characters
@@ -47,15 +47,6 @@ def self.collect_all_characters
       end
     end
   end
-end
-def self.find_character_by_name(name)
-  return_v = false
-  Got::Character.characters.each do |character|
-    if character.name == name
-      return_v = character
-    end
-  end
-  return_v
 end
   # def self.create_character(url)    #Blog refactoring creating a Character instance using a call-back
   #   data = get(url)

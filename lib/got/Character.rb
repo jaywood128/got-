@@ -40,6 +40,16 @@ end
    @@all
  end
 
+ def self.find_by_name(name)
+   return_v = false
+   Got::Character.characters.each do |character|
+     if character.name == name
+       return_v = character
+     end
+   end
+   return_v
+ end
+
   def details
 
       [
