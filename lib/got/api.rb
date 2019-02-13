@@ -13,12 +13,13 @@ class Got::API
   def self.list_books
     all_the_books = get("#{BASE_ENDPOINT}/books")
     all_the_books.map do |book|
-   puts "Book #{book['url'].split.map {|url| url.split("/").last.to_i}} : #{book['name']}."
+      puts "Book #{book['url'].split.map {|url| url.split("/").last.to_i}} : #{book['name']}."
+   # the return value of puts is nil
 
+    end
   end
-end
 
-def self.create_books
+  def self.create_books
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
 
     response.map do |res|
