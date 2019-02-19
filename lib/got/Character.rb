@@ -25,6 +25,7 @@ class Got::Character
  end
 
  def self.find_by_url(url)
+   binding.pry
    @@all[url]
  end
 

@@ -10,19 +10,19 @@ class Got::API
   WORD_PARTICLES = %w(and or the over to the a but of for with).freeze
 
 
-  def self.list_books
-    all_the_books = get("#{BASE_ENDPOINT}/books")
-    all_the_books.map do |book|
-      puts "Book #{book['url'].split.map {|url| url.split("/").last.to_i}} : #{book['name']}."
-   # the return value of puts is nil
-
-    end
-  end
+  # def self.list_books
+  #   all_the_books = get("#{BASE_ENDPOINT}/books")
+  #   all_the_books.map do |book|
+  #     puts "Book #{book['url'].split.map {|url| url.split("/").last.to_i}} : #{book['name']}."
+  #  # the return value of puts is nil
+  #
+  #   end
+  # end
 
   def self.create_books
     response = get("#{BASE_ENDPOINT}/books?page=1&pageSize=50")
 
-    response.map do |res|
+    response.each do |res|
       book_hash =  {:title => res['name'],
       :author => res['authors'][0],
       :number_of_pages => res['numberOfPages'],
@@ -77,14 +77,13 @@ end
 #     end
 # end
   def self.get_more_info
-    book = get("http://anapioficeandfire.com/api/books")
-    book.map do |book|
+    books = get("http://anapioficeandfire.com/api/books")
+    books.map do |book|
            info =  {:isbn => book['isbn'],
                      :authors => book['authors'],
                      :number_of_pages => book['numberOfPages'],
                      :publisher => book['publisher']
                    }
-
-           end
+    end
   end
 end
