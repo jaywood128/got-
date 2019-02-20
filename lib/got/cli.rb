@@ -64,7 +64,7 @@ class Got::CLI
     puts "Enter the name of the character you want more info on: "
     character_name = gets.strip
     character = Got::Character.find_by_name(character_name)
-    if character != false
+    if character
       puts character.details
       # puts character.details #create an instance method in Character.rb that accesses the character details
     else

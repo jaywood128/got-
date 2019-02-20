@@ -25,7 +25,7 @@ class Got::Character
  end
 
  def self.find_by_url(url)
-   binding.pry
+
    @@all[url]
  end
 
@@ -42,13 +42,15 @@ end
  end
 
  def self.find_by_name(name)
-   return_v = false
-   Got::Character.characters.each do |character|
-     if character.name == name
-       return_v = character
-     end
-   end
-   return_v
+  #  return_v = false
+  #  Got::Character.characters.each do |character|
+  #    if character.name == name
+  #      return_v = character
+  #    end
+  #  end
+  #  return_v
+  Got::Character.characters.detect {|character| character.name == name }
+
  end
 
   def details
