@@ -24,7 +24,7 @@ Once installed, simply run the command:
 ` bin/Westeros`
 
 From there, follow the command line: 
-("img/cli-prompts.png")
+(https://github.com/jaywood128/got-/img/cli-prompts.png)
 
 
 ## Development
