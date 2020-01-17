@@ -1,8 +1,6 @@
-# Got
+# GotLine
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/got`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+GotLine is an interactive Ruby gem that allows you to search for characters and book details from the Song of Fire and Ice book series that inspired the TV show Game of Thrones. 
 
 ## Installation
 
@@ -22,7 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Once installed, simply run the command: 
+` bin/Westeros`
+
+From there, follow the command line: 
+("img/cli-prompts.png")
+
 
 ## Development
 
